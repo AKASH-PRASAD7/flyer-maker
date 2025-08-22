@@ -1,7 +1,7 @@
 # 🎨 AI-Powered Flyer Maker
 
 <div align="center">
-  <img src="https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=800&h=300&fit=crop&crop=center&auto=format&q=60" alt="AI Flyer Maker Banner" width="100%" style="border-radius: 10px; margin: 20px 0;">
+ <img width="1898" height="761" alt="image" src="https://github.com/user-attachments/assets/f5592dff-4451-4190-b12f-5d961410d9a0" />
 </div>
 
 > **Transform your ideas into stunning flyers with the power of AI** ✨
@@ -43,8 +43,8 @@ A modern, AI-driven flyer creation platform that combines the intelligence of Go
 ## 📸 Screenshots
 
 <div align="center">
-  <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?w=400&h=300&fit=crop&auto=format&q=60" alt="Template Selection" width="45%" style="margin: 10px;">
-  <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&h=300&fit=crop&auto=format&q=60" alt="AI Generation" width="45%" style="margin: 10px;">
+  <img width="1827" height="907" alt="image" src="https://github.com/user-attachments/assets/4e1398a1-a9fa-4682-8d14-7e426820f125" />
+  <img width="1686" height="908" alt="image" src="https://github.com/user-attachments/assets/b187ccc7-6e8d-41bf-8089-545dbdb9e534" />
 </div>
 
 <div align="center">
@@ -73,44 +73,6 @@ A modern, AI-driven flyer creation platform that combines the intelligence of Go
 - **Turbopack** - Next.js bundler for faster development
 - **Nodemon** - Auto-restart development server
 - **ESLint** - Code linting and formatting
-
-## 🏗️ Architecture Overview
-
-```mermaid
-graph TB
-    A["🌐 Next.js Frontend<br/>(Port 3000)"] --> B["🤖 AI Service<br/>(Port 3004)"]
-    B --> C["🧠 Google Gemini API"]
-    A --> D["🎨 Template Engine"]
-    A --> E["📱 Responsive UI"]
-    F["🖼️ Unsplash Images"] --> A
-    
-    style A fill:#e1f5fe
-    style B fill:#f3e5f5
-    style C fill:#fff3e0
-    style D fill:#e8f5e8
-    style E fill:#fce4ec
-    style F fill:#f1f8e9
-```
-
-### **Component Architecture**
-
-```
-📁 client/src/
-├── 📁 app/
-│   ├── 🏠 page.js (Enhanced Homepage)
-│   ├── 📁 flyer-generator/
-│   │   └── 🎯 page.js (Main AI Generator)
-│   └── 📁 editor/
-│       └── ✏️ page.js (Flyer Editor)
-├── 📁 components/
-│   ├── 📁 flyer/
-│   │   ├── 🎨 flyer-editor.js
-│   │   ├── 🖼️ template-selector.js
-│   │   └── 🤖 ai-generator.js
-│   └── 📁 ui/ (Reusable Components)
-└── 📁 lib/
-    └── 🔧 utils.js
-```
 
 ## ⚡ Quick Setup
 
@@ -228,82 +190,6 @@ The new AI service provides these endpoints:
 - `POST /api/flyer/generate` - Generate AI content only
 - `POST /api/flyer/create` - Generate complete flyer with template
 
-## Project Structure
-
-```
-flyer-maker/
-├── client/                          # Next.js frontend
-│   ├── src/app/flyer-generator/     # New AI flyer generator page
-│   └── src/components/flyer/        # New flyer components
-├── server/
-│   ├── flyer-ai-service/            # New AI service
-│   │   ├── src/controllers/
-│   │   ├── src/routes/
-│   │   └── src/config/
-│   ├── api-gateway/                 # Existing services
-│   ├── design-service/
-│   ├── subscription-service/
-│   └── upload-service/
-└── SETUP_GUIDE.md
-```
-
-## Limitations of This Simplified Version
-
-1. **Text Only**: No image editing or graphics capabilities
-2. **No Positioning**: Cannot move text elements around
-3. **Basic Export**: Only text export, no PDF/image generation
-4. **Simple Templates**: Limited template customization
-5. **No User Authentication**: Removed login requirements for simplicity
-
-## Extending the Application
-
-To add more features:
-
-1. **Enhanced Templates**: Add more template designs in `server/flyer-ai-service/src/config/flyer-templates.js`
-2. **Better Export**: Integrate PDF generation or image export
-3. **More AI Features**: Add image generation using AI
-4. **Template Customization**: Allow users to modify template layouts
-5. **User Accounts**: Re-integrate with the existing authentication system
-
-## Troubleshooting
-
-### Common Issues:
-
-1. **AI Service Not Starting**:
-
-   - Check if Gemini API key is correctly set in `.env`
-   - Ensure port 3004 is not in use
-
-2. **Template Not Loading**:
-
-   - Verify AI service is running on port 3004
-   - Check browser console for CORS errors
-
-3. **AI Generation Fails**:
-   - Verify API key is valid and has credits
-   - Check service logs for error details
-
-### Testing the API Directly:
-
-```bash
-# Test templates endpoint
-curl http://localhost:3004/api/flyer/templates
-
-# Test AI generation
-curl -X POST http://localhost:3004/api/flyer/generate \
-  -H "Content-Type: application/json" \
-  -d '{"userInput":"Beautiful 3 bedroom home for sale","flyerType":"real-estate"}'
-```
-
-## Creative Enhancements Applied
-
-1. **AI-First Approach**: Made AI content generation the core feature
-2. **Simplified UX**: Reduced complexity to focus on the AI workflow
-3. **Template-Driven**: Pre-designed templates for common use cases
-4. **Progressive Enhancement**: 3-step process guides users naturally
-5. **Smart Content Mapping**: AI content automatically populates appropriate template sections
-
-This simplified version demonstrates the power of AI in content creation while maintaining an intuitive user experience.
 
 ## 🎨 Design Enhancements
 
@@ -321,145 +207,7 @@ This simplified version demonstrates the power of AI in content creation while m
 - 🎨 **Professional Styling**: SaaS-grade interface with consistent design language
 - 📝 **Text Readability**: Enhanced contrast with shadows and background overlays
 
-### **Performance Features**
-- ⚡ **Lazy Loading**: Optimized image loading for better performance
-- 🚀 **Turbopack**: Lightning-fast development builds
-- 📦 **Component Optimization**: Efficient React component architecture
-- 🔧 **State Management**: Lightweight Zustand for minimal overhead
 
-## 🚀 Deployment
-
-### **Production Build**
-
-```bash
-# Build the frontend
-cd client
-npm run build
-npm start
-
-# Production AI service
-cd ../server/flyer-ai-service
-npm start
-```
-
-### **Environment Variables**
-
-Create `.env` files in appropriate directories:
-
-**server/flyer-ai-service/.env:**
-```env
-GEMINI_API_KEY=your_gemini_api_key_here
-PORT=3004
-NODE_ENV=production
-```
-
-**client/.env.local:**
-```env
-NEXT_PUBLIC_API_URL=http://localhost:3004
-```
-
-### **Docker Deployment**
-
-```dockerfile
-# Dockerfile example for the AI service
-FROM node:18-alpine
-WORKDIR /app
-COPY package*.json ./
-RUN npm ci --only=production
-COPY . .
-EXPOSE 3004
-CMD ["npm", "start"]
-```
-
-## 📊 Performance Metrics
-
-- **First Load**: < 2 seconds
-- **AI Response**: 3-5 seconds (depends on Gemini API)
-- **Template Switch**: < 0.5 seconds
-- **Real-time Editing**: < 100ms latency
-- **Mobile Performance**: 90+ Lighthouse score
-
-## 🤝 Contributing
-
-### **Development Setup**
-
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/amazing-feature`)
-3. Install dependencies in both `client` and `server/flyer-ai-service`
-4. Make your changes
-5. Test thoroughly
-6. Commit your changes (`git commit -m 'Add some amazing feature'`)
-7. Push to the branch (`git push origin feature/amazing-feature`)
-8. Open a Pull Request
-
-### **Code Style Guidelines**
-
-- Use **ESLint** for JavaScript linting
-- Follow **Prettier** formatting rules
-- Write **meaningful commit messages**
-- Add **comments** for complex logic
-- Use **TypeScript** for type safety (future enhancement)
-
-### **Adding New Templates**
-
-1. Define template in `server/flyer-ai-service/src/config/flyer-templates.js`
-2. Add corresponding images to the template selector
-3. Update category colors if needed
-4. Test with AI generation
-
-## 🐛 Known Issues
-
-- [ ] PDF export not implemented (text export only)
-- [ ] Limited template customization options
-- [ ] No image upload functionality
-- [ ] Mobile editing could be improved
-- [ ] No undo/redo functionality
-
-## 🔮 Future Roadmap
-
-### **Short Term (Next Release)**
-- [ ] PDF/PNG export functionality
-- [ ] More template designs
-- [ ] Improved mobile experience
-- [ ] Color customization options
-
-### **Medium Term**
-- [ ] AI image generation integration
-- [ ] Template marketplace
-- [ ] User accounts and saving
-- [ ] Collaborative editing
-- [ ] Analytics dashboard
-
-### **Long Term**
-- [ ] Multi-language support
-- [ ] Advanced AI features (voice to text, image recognition)
-- [ ] White-label solutions
-- [ ] API monetization
-- [ ] Mobile app development
-
-## 📄 License
-
-This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) file for details.
-
-## 🙏 Acknowledgments
-
-- **Google Gemini** for providing excellent AI capabilities
-- **Unsplash** for high-quality, royalty-free images
-- **Vercel** for Next.js and deployment platform
-- **Tailwind CSS** for the utility-first CSS framework
-- **Radix UI** for accessible component primitives
-- **React Team** for the amazing framework
-
-## 📞 Support
-
-- 📧 **Email**: support@flyermaker.dev
-- 💬 **Discord**: [Join our community](https://discord.gg/flyermaker)
-- 📖 **Documentation**: [docs.flyermaker.dev](https://docs.flyermaker.dev)
-- 🐛 **Issues**: [GitHub Issues](https://github.com/your-repo/flyer-maker/issues)
 
 ---
 
-<div align="center">
-  <p>Made with ❤️ by the Flyer Maker Team</p>
-  <p>⭐ Star us on GitHub if this project helped you!</p>
-</div>
