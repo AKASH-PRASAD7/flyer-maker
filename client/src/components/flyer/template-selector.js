@@ -5,6 +5,33 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 
+// Function to get appropriate Unsplash images for each template category
+const getUnsplashImageForTemplate = (category, index) => {
+  const imageCollections = {
+    'real-estate': [
+      'https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=500&h=400&fit=crop&crop=center&auto=format&q=80', // Modern house exterior
+      'https://images.unsplash.com/photo-1570129477492-45c003edd2be?w=500&h=400&fit=crop&crop=center&auto=format&q=80', // Luxury home interior
+      'https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=500&h=400&fit=crop&crop=center&auto=format&q=80', // Beautiful home front
+      'https://images.unsplash.com/photo-1605146769289-440113cc3d00?w=500&h=400&fit=crop&crop=center&auto=format&q=80', // Real estate sign
+    ],
+    'event': [
+      'https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=500&h=400&fit=crop&crop=center&auto=format&q=80', // Event celebration
+      'https://images.unsplash.com/photo-1511578314322-379afb476865?w=500&h=400&fit=crop&crop=center&auto=format&q=80', // Party balloons
+      'https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?w=500&h=400&fit=crop&crop=center&auto=format&q=80', // Concert/event
+      'https://images.unsplash.com/photo-1517457373958-b7bdd4587205?w=500&h=400&fit=crop&crop=center&auto=format&q=80', // Business conference
+    ],
+    'business': [
+      'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=500&h=400&fit=crop&crop=center&auto=format&q=80', // Business office
+      'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=500&h=400&fit=crop&crop=center&auto=format&q=80', // Business meeting
+      'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=500&h=400&fit=crop&crop=center&auto=format&q=80', // Modern office building
+      'https://images.unsplash.com/photo-1556761175-b413da4baf72?w=500&h=400&fit=crop&crop=center&auto=format&q=80', // Team working
+    ]
+  };
+  
+  const categoryImages = imageCollections[category] || imageCollections['business'];
+  return categoryImages[index % categoryImages.length];
+};
+
 export default function TemplateSelector({ onTemplateSelect }) {
   const [templates, setTemplates] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -76,35 +103,29 @@ export default function TemplateSelector({ onTemplateSelect }) {
             <div className="bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
               {/* Template Preview Image */}
               <div className="relative h-64 bg-gradient-to-br from-gray-50 to-gray-100 overflow-hidden">
-                <div 
-                  className="absolute inset-0 opacity-20"
-                  style={{
-                    backgroundColor: template.layout.backgroundColor,
-                    backgroundImage: `linear-gradient(45deg, ${template.layout.backgroundColor}22 25%, transparent 25%), 
-                                    linear-gradient(-45deg, ${template.layout.backgroundColor}22 25%, transparent 25%), 
-                                    linear-gradient(45deg, transparent 75%, ${template.layout.backgroundColor}22 75%), 
-                                    linear-gradient(-45deg, transparent 75%, ${template.layout.backgroundColor}22 75%)`,
-                    backgroundSize: '20px 20px',
-                    backgroundPosition: '0 0, 0 10px, 10px -10px, -10px 0px'
-                  }}
-                ></div>
+                {/* Unsplash Image */}
+                <img 
+                  src={getUnsplashImageForTemplate(template.category, index)}
+                  alt={`${template.name} template preview`}
+                  className="absolute inset-0 w-full h-full object-cover"
+                  loading="lazy"
+                />
                 
-                {/* Mock template content */}
-                <div className="relative h-full p-6 flex flex-col justify-center items-center">
-                  <div className="w-full max-w-32">
-                    <div className={`h-4 rounded mb-3 ${
-                      template.category === 'real-estate' ? 'bg-blue-200' :
-                      template.category === 'event' ? 'bg-red-200' : 'bg-purple-200'
+                {/* Gradient overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-black/20"></div>
+                
+                {/* Template content overlay */}
+                <div className="absolute inset-0 flex flex-col justify-end p-6">
+                  <div className="bg-white/90 backdrop-blur-sm rounded-lg p-3 shadow-lg">
+                    <div className={`h-2 rounded mb-2 ${
+                      template.category === 'real-estate' ? 'bg-blue-500' :
+                      template.category === 'event' ? 'bg-red-500' : 'bg-purple-500'
                     }`}></div>
-                    <div className="space-y-2">
-                      <div className="h-2 bg-gray-300 rounded"></div>
-                      <div className="h-2 bg-gray-300 rounded w-3/4"></div>
-                      <div className="h-2 bg-gray-300 rounded w-1/2"></div>
+                    <div className="space-y-1">
+                      <div className="h-1.5 bg-gray-400 rounded w-full"></div>
+                      <div className="h-1.5 bg-gray-300 rounded w-3/4"></div>
+                      <div className="h-1.5 bg-gray-300 rounded w-1/2"></div>
                     </div>
-                    <div className={`h-3 rounded mt-4 w-2/3 ${
-                      template.category === 'real-estate' ? 'bg-blue-300' :
-                      template.category === 'event' ? 'bg-red-300' : 'bg-purple-300'
-                    }`}></div>
                   </div>
                 </div>
                 

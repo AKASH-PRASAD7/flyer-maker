@@ -86,26 +86,53 @@ export default function Home() {
               
               {/* Feature highlights */}
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
-                <div className="bg-white/70 backdrop-blur-sm rounded-2xl p-6 border border-white/50 shadow-lg">
-                  <div className="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center mb-4">
-                    <span className="text-2xl">⚡</span>
+                <div className="group relative bg-white/70 backdrop-blur-sm rounded-2xl p-6 border border-white/50 shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden">
+                  <div className="absolute inset-0 opacity-5 group-hover:opacity-10 transition-opacity">
+                    <img 
+                      src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=400&h=300&fit=crop&auto=format&q=60" 
+                      alt="Speed" 
+                      className="w-full h-full object-cover"
+                    />
                   </div>
-                  <h3 className="text-lg font-bold text-gray-900 mb-2">Lightning Fast</h3>
-                  <p className="text-gray-600 text-sm">Generate professional flyers in under 30 seconds</p>
+                  <div className="relative">
+                    <div className="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center mb-4">
+                      <span className="text-2xl">⚡</span>
+                    </div>
+                    <h3 className="text-lg font-bold text-gray-900 mb-2">Lightning Fast</h3>
+                    <p className="text-gray-600 text-sm">Generate professional flyers in under 30 seconds</p>
+                  </div>
                 </div>
-                <div className="bg-white/70 backdrop-blur-sm rounded-2xl p-6 border border-white/50 shadow-lg">
-                  <div className="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center mb-4">
-                    <span className="text-2xl">🎯</span>
+                <div className="group relative bg-white/70 backdrop-blur-sm rounded-2xl p-6 border border-white/50 shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden">
+                  <div className="absolute inset-0 opacity-5 group-hover:opacity-10 transition-opacity">
+                    <img 
+                      src="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=400&h=300&fit=crop&auto=format&q=60" 
+                      alt="AI Content" 
+                      className="w-full h-full object-cover"
+                    />
                   </div>
-                  <h3 className="text-lg font-bold text-gray-900 mb-2">Smart Content</h3>
-                  <p className="text-gray-600 text-sm">AI-powered copywriting that sells and converts</p>
+                  <div className="relative">
+                    <div className="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center mb-4">
+                      <span className="text-2xl">🎯</span>
+                    </div>
+                    <h3 className="text-lg font-bold text-gray-900 mb-2">Smart Content</h3>
+                    <p className="text-gray-600 text-sm">AI-powered copywriting that sells and converts</p>
+                  </div>
                 </div>
-                <div className="bg-white/70 backdrop-blur-sm rounded-2xl p-6 border border-white/50 shadow-lg">
-                  <div className="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center mb-4">
-                    <span className="text-2xl">🎨</span>
+                <div className="group relative bg-white/70 backdrop-blur-sm rounded-2xl p-6 border border-white/50 shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden">
+                  <div className="absolute inset-0 opacity-5 group-hover:opacity-10 transition-opacity">
+                    <img 
+                      src="https://images.unsplash.com/photo-1561070791-2526d30994b5?w=400&h=300&fit=crop&auto=format&q=60" 
+                      alt="Design" 
+                      className="w-full h-full object-cover"
+                    />
                   </div>
-                  <h3 className="text-lg font-bold text-gray-900 mb-2">Beautiful Design</h3>
-                  <p className="text-gray-600 text-sm">Professional templates for every occasion</p>
+                  <div className="relative">
+                    <div className="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center mb-4">
+                      <span className="text-2xl">🎨</span>
+                    </div>
+                    <h3 className="text-lg font-bold text-gray-900 mb-2">Beautiful Design</h3>
+                    <p className="text-gray-600 text-sm">Professional templates for every occasion</p>
+                  </div>
                 </div>
               </div>
               
