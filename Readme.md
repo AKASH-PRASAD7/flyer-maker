@@ -211,7 +211,3 @@ The new AI service provides these endpoints:
 
 ---
 
-<div align="center">
-  <p>Made with ❤️ by the Flyer Maker Team</p>
-  <p>⭐ Star us on GitHub if this project helped you!</p>
-</div>
