@@ -40,7 +40,79 @@ A modern, AI-driven flyer creation platform that combines the intelligence of Go
 - **Component-Based Design**: Consistent styling across the entire platform
 - **Smooth Interactions**: Polished hover effects and transitions
 
-## Quick Setup
+## 📸 Screenshots
+
+<div align="center">
+  <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?w=400&h=300&fit=crop&auto=format&q=60" alt="Template Selection" width="45%" style="margin: 10px;">
+  <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&h=300&fit=crop&auto=format&q=60" alt="AI Generation" width="45%" style="margin: 10px;">
+</div>
+
+<div align="center">
+  <p><em>Template Selection & AI-Powered Content Generation</em></p>
+</div>
+
+## 🛠️ Tech Stack
+
+### **Frontend**
+- **Next.js 15.2.4** - React framework with App Router
+- **React 19.0.0** - Latest React with concurrent features
+- **Tailwind CSS 4** - Utility-first CSS framework
+- **Radix UI** - Accessible component primitives
+- **Lucide React** - Beautiful SVG icons
+- **Zustand** - Lightweight state management
+- **Axios** - HTTP client for API requests
+
+### **Backend**
+- **Node.js** - JavaScript runtime
+- **Express.js** - Web application framework
+- **Google Gemini AI** - Advanced language model
+- **CORS** - Cross-origin resource sharing
+- **dotenv** - Environment variables management
+
+### **Development Tools**
+- **Turbopack** - Next.js bundler for faster development
+- **Nodemon** - Auto-restart development server
+- **ESLint** - Code linting and formatting
+
+## 🏗️ Architecture Overview
+
+```mermaid
+graph TB
+    A["🌐 Next.js Frontend<br/>(Port 3000)"] --> B["🤖 AI Service<br/>(Port 3004)"]
+    B --> C["🧠 Google Gemini API"]
+    A --> D["🎨 Template Engine"]
+    A --> E["📱 Responsive UI"]
+    F["🖼️ Unsplash Images"] --> A
+    
+    style A fill:#e1f5fe
+    style B fill:#f3e5f5
+    style C fill:#fff3e0
+    style D fill:#e8f5e8
+    style E fill:#fce4ec
+    style F fill:#f1f8e9
+```
+
+### **Component Architecture**
+
+```
+📁 client/src/
+├── 📁 app/
+│   ├── 🏠 page.js (Enhanced Homepage)
+│   ├── 📁 flyer-generator/
+│   │   └── 🎯 page.js (Main AI Generator)
+│   └── 📁 editor/
+│       └── ✏️ page.js (Flyer Editor)
+├── 📁 components/
+│   ├── 📁 flyer/
+│   │   ├── 🎨 flyer-editor.js
+│   │   ├── 🖼️ template-selector.js
+│   │   └── 🤖 ai-generator.js
+│   └── 📁 ui/ (Reusable Components)
+└── 📁 lib/
+    └── 🔧 utils.js
+```
+
+## ⚡ Quick Setup
 
 ### 1. Backend (AI Service)
 
