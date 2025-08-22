@@ -1,7 +1,7 @@
 # 🎨 AI-Powered Flyer Maker
 
 <div align="center">
-  <img src="https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=800&h=300&fit=crop&crop=center&auto=format&q=60" alt="AI Flyer Maker Banner" width="100%" style="border-radius: 10px; margin: 20px 0;">
+ <img width="1898" height="761" alt="image" src="https://github.com/user-attachments/assets/f5592dff-4451-4190-b12f-5d961410d9a0" />
 </div>
 
 > **Transform your ideas into stunning flyers with the power of AI** ✨
