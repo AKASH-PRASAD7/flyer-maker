@@ -7,6 +7,16 @@ import { Slider } from "@/components/ui/slider";
 import { Textarea } from "@/components/ui/textarea";
 import { Download, Save, Type } from "lucide-react";
 
+// Helper function to get accent colors based on template category
+const getTemplateAccentColor = (category) => {
+  const colors = {
+    'real-estate': '#3B82F6', // Blue
+    'event': '#EF4444', // Red  
+    'business': '#8B5CF6', // Purple
+  };
+  return colors[category] || colors['business'];
+};
+
 export default function FlyerEditor({ flyerData, onSave }) {
   const [editedContent, setEditedContent] = useState({});
   const [selectedElement, setSelectedElement] = useState(null);
@@ -153,41 +163,92 @@ export default function FlyerEditor({ flyerData, onSave }) {
                       boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.25), 0 0 0 1px rgba(255, 255, 255, 0.1)'
                     }}
                   >
-                    {/* Decorative corner elements */}
-                    <div className="absolute top-0 left-0 w-20 h-20 bg-gradient-to-br from-blue-500/10 to-transparent rounded-br-full"></div>
-                    <div className="absolute bottom-0 right-0 w-20 h-20 bg-gradient-to-tl from-indigo-500/10 to-transparent rounded-tl-full"></div>
+                    {/* Background Pattern */}
+                    <div className="absolute inset-0 opacity-5">
+                      <div className="w-full h-full" style={{
+                        backgroundImage: `radial-gradient(circle at 20% 50%, ${getTemplateAccentColor(flyerData.template.category)}22 0%, transparent 50%), 
+                                        radial-gradient(circle at 80% 20%, ${getTemplateAccentColor(flyerData.template.category)}15 0%, transparent 50%),
+                                        radial-gradient(circle at 40% 80%, ${getTemplateAccentColor(flyerData.template.category)}10 0%, transparent 50%)`,
+                      }}></div>
+                    </div>
                     
-                    {flyerData.template.layout.elements.map((element) => (
-                      <div
-                        key={element.id}
-                        className={`absolute cursor-pointer p-3 rounded-lg transition-all duration-200 ${
-                          selectedElement?.id === element.id 
-                            ? 'ring-2 ring-blue-500 bg-blue-50/50 shadow-lg' 
-                            : 'hover:ring-2 hover:ring-blue-300 hover:bg-blue-50/30'
-                        }`}
-                        style={{
-                          left: (element.position.x * 0.7),
-                          top: (element.position.y * 0.7),
-                          fontSize: selectedElement?.id === element.id 
-                            ? (fontSize * 0.7) 
-                            : (element.style.fontSize * 0.7),
-                          fontFamily: element.style.fontFamily,
-                          fontWeight: element.style.fontWeight,
-                          color: element.style.color,
-                          textAlign: element.style.textAlign || 'left',
-                          lineHeight: element.style.lineHeight || 1.4,
-                          maxWidth: '350px',
-                          whiteSpace: 'pre-line'
-                        }}
-                        onClick={() => handleElementSelect(element)}
-                        title={`Click to edit ${element.id}`}
-                      >
-                        {editedContent[element.id] || element.content}
-                        {selectedElement?.id === element.id && (
-                          <div className="absolute -top-2 -right-2 w-4 h-4 bg-blue-500 rounded-full border-2 border-white shadow-lg"></div>
-                        )}
-                      </div>
-                    ))}
+                    {/* Professional Border Design */}
+                    <div className="absolute inset-0 border-2 border-gray-200/30 rounded-xl pointer-events-none"></div>
+                    
+                    {/* Corner Accents */}
+                    <div className={`absolute top-0 left-0 w-32 h-32 opacity-10`} style={{
+                      background: `linear-gradient(135deg, ${getTemplateAccentColor(flyerData.template.category)} 0%, transparent 70%)`
+                    }}></div>
+                    <div className={`absolute bottom-0 right-0 w-24 h-24 opacity-10`} style={{
+                      background: `linear-gradient(315deg, ${getTemplateAccentColor(flyerData.template.category)} 0%, transparent 70%)`
+                    }}></div>
+                    
+                    {flyerData.template.layout.elements.map((element) => {
+                      const isHeadline = element.id === 'headline';
+                      const isCTA = element.id === 'cta';
+                      const isHighlights = element.id === 'highlights';
+                      
+                      return (
+                        <div
+                          key={element.id}
+                          className={`absolute cursor-pointer transition-all duration-200 ${
+                            selectedElement?.id === element.id 
+                              ? 'ring-2 ring-blue-500 shadow-lg z-10' 
+                              : 'hover:ring-2 hover:ring-blue-300'
+                          } ${
+                            isHeadline ? 'p-4 rounded-2xl' : 
+                            isCTA ? 'p-3 rounded-xl' :
+                            isHighlights ? 'p-3 rounded-lg' : 'p-2 rounded-lg'
+                          }`}
+                          style={{
+                            left: (element.position.x * 0.7),
+                            top: (element.position.y * 0.7),
+                            fontSize: selectedElement?.id === element.id 
+                              ? (fontSize * 0.7) 
+                              : (element.style.fontSize * 0.7),
+                            fontFamily: element.style.fontFamily,
+                            fontWeight: isHeadline ? 'bold' : element.style.fontWeight,
+                            color: element.style.color,
+                            textAlign: element.style.textAlign || 'left',
+                            lineHeight: isHeadline ? 1.2 : (element.style.lineHeight || 1.4),
+                            maxWidth: isHeadline ? '400px' : '350px',
+                            whiteSpace: 'pre-line',
+                            textShadow: isHeadline ? '0 2px 4px rgba(0,0,0,0.1)' : 'none',
+                            background: selectedElement?.id === element.id 
+                              ? 'rgba(59, 130, 246, 0.1)' 
+                              : isCTA 
+                              ? `linear-gradient(135deg, ${getTemplateAccentColor(flyerData.template.category)}15, ${getTemplateAccentColor(flyerData.template.category)}08)`
+                              : 'transparent',
+                            border: isCTA ? `2px solid ${getTemplateAccentColor(flyerData.template.category)}40` : 'none',
+                            borderRadius: isCTA ? '12px' : '8px'
+                          }}
+                          onClick={() => handleElementSelect(element)}
+                          title={`Click to edit ${element.id}`}
+                        >
+                          {/* Add visual enhancements based on element type */}
+                          {isHeadline && (
+                            <div className="absolute inset-0 -z-10 bg-gradient-to-r from-transparent via-white/50 to-transparent rounded-2xl opacity-60"></div>
+                          )}
+                          
+                          {isHighlights && (
+                            <div className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-blue-500 to-indigo-500 rounded-full opacity-60"></div>
+                          )}
+                          
+                          <div className={`relative ${
+                            isHeadline ? 'drop-shadow-sm' : ''
+                          }`}>
+                            {editedContent[element.id] || element.content}
+                          </div>
+                          
+                          {selectedElement?.id === element.id && (
+                            <div className="absolute -top-2 -right-2 w-4 h-4 bg-blue-500 rounded-full border-2 border-white shadow-lg animate-pulse"></div>
+                          )}
+                        </div>
+                      );
+                    })}
+                    
+                    {/* Professional Footer */}
+                    <div className="absolute bottom-4 left-4 right-4 h-px bg-gradient-to-r from-transparent via-gray-300/50 to-transparent"></div>
                   </div>
                 </div>
                 
