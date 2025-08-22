@@ -57,13 +57,13 @@ export default function Home() {
         <Header />
         <main className="flex-1 p-6 overflow-y-auto pt-20">
           <Banner />
-          
+
           {/* AI Flyer Generator Section */}
           <div className="relative bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 rounded-3xl p-12 mb-12 overflow-hidden">
             {/* Background decorations */}
             <div className="absolute top-0 left-0 w-40 h-40 bg-gradient-to-br from-blue-400/20 to-transparent rounded-full -translate-x-8 -translate-y-8"></div>
             <div className="absolute bottom-0 right-0 w-32 h-32 bg-gradient-to-tl from-purple-400/20 to-transparent rounded-full translate-x-4 translate-y-4"></div>
-            
+
             <div className="relative">
               <div className="text-center mb-8">
                 <div className="inline-flex items-center px-4 py-2 bg-blue-100 text-blue-800 rounded-full text-sm font-medium mb-6">
@@ -78,19 +78,19 @@ export default function Home() {
                   </h2>
                 </div>
                 <p className="text-lg text-gray-700 mb-8 max-w-3xl mx-auto leading-relaxed">
-                  Transform simple ideas into professional flyers with the power of AI. 
-                  Just describe what you need, and watch our intelligent system create stunning, 
-                  persuasive content that converts.
+                  Transform simple ideas into professional flyers with the power
+                  of AI. Just describe what you need, and watch our intelligent
+                  system create stunning, persuasive content that converts.
                 </p>
               </div>
-              
+
               {/* Feature highlights */}
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
                 <div className="group relative bg-white/70 backdrop-blur-sm rounded-2xl p-6 border border-white/50 shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden">
                   <div className="absolute inset-0 opacity-5 group-hover:opacity-10 transition-opacity">
-                    <img 
-                      src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=400&h=300&fit=crop&auto=format&q=60" 
-                      alt="Speed" 
+                    <img
+                      src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=400&h=300&fit=crop&auto=format&q=60"
+                      alt="Speed"
                       className="w-full h-full object-cover"
                     />
                   </div>
@@ -98,15 +98,19 @@ export default function Home() {
                     <div className="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center mb-4">
                       <span className="text-2xl">⚡</span>
                     </div>
-                    <h3 className="text-lg font-bold text-gray-900 mb-2">Lightning Fast</h3>
-                    <p className="text-gray-600 text-sm">Generate professional flyers in under 30 seconds</p>
+                    <h3 className="text-lg font-bold text-gray-900 mb-2">
+                      Lightning Fast
+                    </h3>
+                    <p className="text-gray-600 text-sm">
+                      Generate professional flyers in under 30 seconds
+                    </p>
                   </div>
                 </div>
                 <div className="group relative bg-white/70 backdrop-blur-sm rounded-2xl p-6 border border-white/50 shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden">
                   <div className="absolute inset-0 opacity-5 group-hover:opacity-10 transition-opacity">
-                    <img 
-                      src="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=400&h=300&fit=crop&auto=format&q=60" 
-                      alt="AI Content" 
+                    <img
+                      src="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=400&h=300&fit=crop&auto=format&q=60"
+                      alt="AI Content"
                       className="w-full h-full object-cover"
                     />
                   </div>
@@ -114,15 +118,19 @@ export default function Home() {
                     <div className="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center mb-4">
                       <span className="text-2xl">🎯</span>
                     </div>
-                    <h3 className="text-lg font-bold text-gray-900 mb-2">Smart Content</h3>
-                    <p className="text-gray-600 text-sm">AI-powered copywriting that sells and converts</p>
+                    <h3 className="text-lg font-bold text-gray-900 mb-2">
+                      Smart Content
+                    </h3>
+                    <p className="text-gray-600 text-sm">
+                      AI-powered copywriting that sells and converts
+                    </p>
                   </div>
                 </div>
                 <div className="group relative bg-white/70 backdrop-blur-sm rounded-2xl p-6 border border-white/50 shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden">
                   <div className="absolute inset-0 opacity-5 group-hover:opacity-10 transition-opacity">
-                    <img 
-                      src="https://images.unsplash.com/photo-1561070791-2526d30994b5?w=400&h=300&fit=crop&auto=format&q=60" 
-                      alt="Design" 
+                    <img
+                      src="https://images.unsplash.com/photo-1561070791-2526d30994b5?w=400&h=300&fit=crop&auto=format&q=60"
+                      alt="Design"
                       className="w-full h-full object-cover"
                     />
                   </div>
@@ -130,12 +138,16 @@ export default function Home() {
                     <div className="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center mb-4">
                       <span className="text-2xl">🎨</span>
                     </div>
-                    <h3 className="text-lg font-bold text-gray-900 mb-2">Beautiful Design</h3>
-                    <p className="text-gray-600 text-sm">Professional templates for every occasion</p>
+                    <h3 className="text-lg font-bold text-gray-900 mb-2">
+                      Beautiful Design
+                    </h3>
+                    <p className="text-gray-600 text-sm">
+                      Professional templates for every occasion
+                    </p>
                   </div>
                 </div>
               </div>
-              
+
               {/* CTA Section */}
               <div className="text-center">
                 <div className="inline-flex items-center bg-white rounded-2xl p-2 shadow-lg mb-6">
@@ -149,25 +161,31 @@ export default function Home() {
                     </div>
                   </div>
                   <div className="text-left pr-4">
-                    <p className="text-sm font-medium text-gray-900">Join 2,500+ users</p>
-                    <p className="text-xs text-gray-600">creating amazing flyers daily</p>
+                    <p className="text-sm font-medium text-gray-900">
+                      Join 2,500+ users
+                    </p>
+                    <p className="text-xs text-gray-600">
+                      creating amazing flyers daily
+                    </p>
                   </div>
                 </div>
                 <br />
-                <Link href="/flyer-generator">
-                  <Button className="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white px-8 py-4 text-lg font-bold rounded-2xl shadow-xl hover:shadow-2xl transform hover:-translate-y-1 transition-all duration-300">
+                <Link className="cursor-pointer" href="/flyer-generator">
+                  <Button className="bg-gradient-to-r cursor-pointer from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white px-8 py-4 text-lg font-bold rounded-2xl shadow-xl hover:shadow-2xl transform hover:-translate-y-1 transition-all duration-300">
                     <Wand2 className="w-5 h-5 mr-3" />
                     Start Creating Now - It's Free! ✨
                   </Button>
                 </Link>
-                <p className="text-sm text-gray-500 mt-3">No signup required • Generate unlimited flyers</p>
+                <p className="text-sm text-gray-500 mt-3">
+                  No signup required • Generate unlimited flyers
+                </p>
               </div>
             </div>
           </div>
-          
-          <DesignTypes />
-          <AiFeatures />
-          <RecentDesigns />
+
+          {/* <DesignTypes /> */}
+          {/* <AiFeatures /> */}
+          {/* <RecentDesigns /> */}
         </main>
       </div>
       <SubscriptionModal

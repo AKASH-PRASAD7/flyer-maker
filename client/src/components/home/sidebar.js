@@ -3,6 +3,7 @@
 import { saveDesign } from "@/services/design-service";
 import { useEditorStore } from "@/store";
 import { CreditCard, FolderOpen, Home, Plus } from "lucide-react";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 
 function SideBar() {
@@ -36,9 +37,11 @@ function SideBar() {
         onClick={handleCreateNewDesign}
         className="flex flex-col items-center"
       >
-        <button className="w-12 h-12 bg-purple-600 rounded-full flex items-center justify-center text-white hover:bg-purple-700 transition-colors">
-          <Plus className="w-6 h-6" />
-        </button>
+        <Link href="/flyer-generator">
+          <button className="w-12 h-12 cursor-pointer bg-purple-600 rounded-full flex items-center justify-center text-white hover:bg-purple-700 transition-colors">
+            <Plus className="w-6 h-6" />
+          </button>
+        </Link>
         <div className="text-xs font-medium text-center mt-1 text-gray-700">
           Create
         </div>
