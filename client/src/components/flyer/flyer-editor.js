@@ -211,7 +211,7 @@ export default function FlyerEditor({ flyerData, onSave }) {
                     }}
                   >
                     {/* Background Image */}
-                    <div className="absolute inset-0 opacity-15">
+                    <div className="absolute inset-0 opacity-25">
                       <img
                         src={getTemplateBackgroundImage(
                           flyerData.template.category,
@@ -219,9 +219,11 @@ export default function FlyerEditor({ flyerData, onSave }) {
                         )}
                         alt="Background"
                         className="w-full h-full object-cover"
-                        style={{ filter: "blur(0.5px) brightness(1.1)" }}
+                        style={{
+                          filter: "blur(0.4px) brightness(1.2) contrast(1.1)",
+                        }}
                       />
-                      <div className="absolute inset-0 bg-white/40"></div>
+                      <div className="absolute inset-0 bg-white/25"></div>
                     </div>
 
                     {/* Enhanced Background Pattern */}
