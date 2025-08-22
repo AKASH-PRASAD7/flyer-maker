@@ -1,11 +1,11 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Slider } from "@/components/ui/slider";
 import { Textarea } from "@/components/ui/textarea";
-import { Download, Save, Type } from "lucide-react";
+import { Download, Save, Type, Move } from "lucide-react";
 
 // Helper function to get accent colors based on template category
 const getTemplateAccentColor = (category) => {
@@ -42,6 +42,10 @@ export default function FlyerEditor({ flyerData, onSave }) {
   const [editedContent, setEditedContent] = useState({});
   const [selectedElement, setSelectedElement] = useState(null);
   const [fontSize, setFontSize] = useState(16);
+  const [elementPositions, setElementPositions] = useState({});
+  const [isDragging, setIsDragging] = useState(false);
+  const [dragOffset, setDragOffset] = useState({ x: 0, y: 0 });
+  const flyerContainerRef = useRef(null);
 
   useEffect(() => {
     if (flyerData) {
@@ -144,6 +148,64 @@ export default function FlyerEditor({ flyerData, onSave }) {
     URL.revokeObjectURL(url);
   };
 
+  // Drag and Drop handlers
+  const handleMouseDown = (e, element) => {
+    e.preventDefault();
+    e.stopPropagation();
+    
+    const rect = e.currentTarget.getBoundingClientRect();
+    const containerRect = flyerContainerRef.current?.getBoundingClientRect();
+    
+    if (!containerRect) return;
+    
+    setIsDragging(true);
+    setSelectedElement(element);
+    setDragOffset({
+      x: e.clientX - rect.left,
+      y: e.clientY - rect.top,
+    });
+  };
+
+  const handleMouseMove = (e) => {
+    if (!isDragging || !selectedElement || !flyerContainerRef.current) return;
+    
+    e.preventDefault();
+    const containerRect = flyerContainerRef.current.getBoundingClientRect();
+    
+    // Calculate new position relative to the flyer container
+    let newX = (e.clientX - containerRect.left - dragOffset.x) / 0.7; // Adjust for scale
+    let newY = (e.clientY - containerRect.top - dragOffset.y) / 0.7;
+    
+    // Boundary checking
+    const maxX = flyerData.template.layout.width - 100; // Leave some margin
+    const maxY = flyerData.template.layout.height - 50;
+    
+    newX = Math.max(0, Math.min(newX, maxX));
+    newY = Math.max(0, Math.min(newY, maxY));
+    
+    setElementPositions(prev => ({
+      ...prev,
+      [selectedElement.id]: { x: newX, y: newY }
+    }));
+  };
+
+  const handleMouseUp = () => {
+    setIsDragging(false);
+  };
+
+  // Add mouse event listeners
+  useEffect(() => {
+    if (isDragging) {
+      document.addEventListener('mousemove', handleMouseMove);
+      document.addEventListener('mouseup', handleMouseUp);
+      
+      return () => {
+        document.removeEventListener('mousemove', handleMouseMove);
+        document.removeEventListener('mouseup', handleMouseUp);
+      };
+    }
+  }, [isDragging, selectedElement, dragOffset]);
+
   if (!flyerData) {
     return <div>Loading editor...</div>;
   }
@@ -194,6 +256,7 @@ export default function FlyerEditor({ flyerData, onSave }) {
               <div className="p-8 bg-gradient-to-b from-gray-50 to-white">
                 <div className="flex justify-center">
                   <div
+                    ref={flyerContainerRef}
                     className="relative shadow-2xl rounded-xl overflow-hidden border-4 border-white transform hover:scale-105 transition-all duration-300"
                     style={{
                       width: Math.min(
@@ -276,14 +339,21 @@ export default function FlyerEditor({ flyerData, onSave }) {
                       const isHeadline = element.id === "headline";
                       const isCTA = element.id === "cta";
                       const isHighlights = element.id === "highlights";
+                      
+                      // Use custom position if available, otherwise use template position
+                      const currentPosition = elementPositions[element.id] || element.position;
 
                       return (
                         <div
                           key={element.id}
-                          className={`absolute cursor-pointer transition-all duration-200 ${
+                          className={`absolute transition-all duration-200 select-none ${
                             selectedElement?.id === element.id
-                              ? "ring-2 ring-blue-500 shadow-lg z-10"
-                              : "hover:ring-2 hover:ring-blue-300"
+                              ? "ring-2 ring-blue-500 shadow-lg z-10 cursor-move"
+                              : "hover:ring-2 hover:ring-blue-300 cursor-pointer"
+                          } ${
+                            isDragging && selectedElement?.id === element.id
+                              ? "cursor-move scale-105"
+                              : ""
                           } ${
                             isHeadline
                               ? "p-4 rounded-2xl"
@@ -294,8 +364,8 @@ export default function FlyerEditor({ flyerData, onSave }) {
                               : "p-2 rounded-lg"
                           }`}
                           style={{
-                            left: element.position.x * 0.7,
-                            top: element.position.y * 0.7,
+                            left: currentPosition.x * 0.7,
+                            top: currentPosition.y * 0.7,
                             fontSize:
                               selectedElement?.id === element.id
                                 ? fontSize * 0.7
@@ -334,7 +404,8 @@ export default function FlyerEditor({ flyerData, onSave }) {
                             borderRadius: isCTA ? "12px" : "8px",
                           }}
                           onClick={() => handleElementSelect(element)}
-                          title={`Click to edit ${element.id}`}
+                          onMouseDown={(e) => handleMouseDown(e, element)}
+                          title={`Click to edit ${element.id} • Drag to move`}
                         >
                           {/* Add visual enhancements based on element type */}
                           {isHeadline && (
@@ -368,8 +439,14 @@ export default function FlyerEditor({ flyerData, onSave }) {
                 {/* Preview Footer */}
                 <div className="mt-6 text-center">
                   <p className="text-gray-500 text-sm">
-                    Click on any text element to edit • Real-time preview
+                    Click to edit text • Drag to move elements • Real-time preview
                   </p>
+                  {selectedElement && (
+                    <div className="mt-2 inline-flex items-center gap-2 px-3 py-1 bg-blue-50 text-blue-700 text-xs font-medium rounded-full">
+                      <Move className="w-3 h-3" />
+                      {selectedElement.id.charAt(0).toUpperCase() + selectedElement.id.slice(1)} selected - drag to reposition
+                    </div>
+                  )}
                 </div>
               </div>
             </div>
