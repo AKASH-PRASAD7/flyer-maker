@@ -43,8 +43,8 @@ A modern, AI-driven flyer creation platform that combines the intelligence of Go
 ## 📸 Screenshots
 
 <div align="center">
-  <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?w=400&h=300&fit=crop&auto=format&q=60" alt="Template Selection" width="45%" style="margin: 10px;">
-  <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&h=300&fit=crop&auto=format&q=60" alt="AI Generation" width="45%" style="margin: 10px;">
+  <img width="1827" height="907" alt="image" src="https://github.com/user-attachments/assets/4e1398a1-a9fa-4682-8d14-7e426820f125" />
+  <img width="1686" height="908" alt="image" src="https://github.com/user-attachments/assets/b187ccc7-6e8d-41bf-8089-545dbdb9e534" />
 </div>
 
 <div align="center">
